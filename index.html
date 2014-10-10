@@ -2,6 +2,28 @@
 <html>
 <head>
   <title>TP Node</title>
+  <style type="text/css">
+    .elt {
+      position: relative;
+      margin: 10px;
+      padding: 10px;
+      border: gray solid 2px;
+    }
+    .elt p {
+      margin: 0px;
+    }
+    .state {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    .OFF {
+      background-color: #DDD;
+    }
+    .DISCONNECTED {
+      border-color: red;
+    }
+  </style>
 </head>
 <body>
   <h1 id="title">TP Node.js</h1>
@@ -12,6 +34,9 @@
     <p class="lagrande">Ma page d'accueil</p>
     <button id="toggleBtn">Afficher/masquer</button>
     <button id="cssBtn">Modifier couleur de fond</button>
+  </div>
+  <div>
+    <button id="showList">Afficher la liste</button>
   </div>
   <script src="jquery-2.1.1.js"></script>
   <script src="monscript.js"></script>
