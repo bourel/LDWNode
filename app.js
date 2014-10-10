@@ -1,37 +1,20 @@
 
 var PORT = 8000;
 
-// Chargement du module http (un module Node.js natif)
-var http = require('http'),
-    fs = require('fs'),
-    server;
+// chargement du module Express depuis le répertoire "node_modules"
+var express = require('express'), 
+    app = express();
 
-// Création d'un serveur HTTP
-server = http.createServer(function (req, res) {
-  var fichier = "404.html",
-      codeReponse = 404;
-
-  console.log(req.url);
-  // Début de la fonction de callback : 
-  // cette fonction est appelé à chaque requête du client
-  if(req.url == "/"){
-    fichier = "index.html";
-    codeReponse = 200;
-  } else if(req.url == "/about"){
-    fichier = "about.html";
-    codeReponse = 200;
-  } 
-  
-  console.log("Debut de la lecture");	
-  fs.readFile(fichier, function(err, data){	
-    console.log("Fin de la lecture du fichier");
-    res.writeHead(codeReponse, {'Content-Type': 'text/html'});
-    res.write(data);
-    res.end();
-  });
-  console.log("Fin de la function");
+// route '/' renvoie le fichier de la page d'accueil
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/index.html');
 });
 
-server.listen(PORT);
+// route '/about' renvoie le fichier d'a propos
+app.get('/about', function(req, res){
+  res.sendFile(__dirname + '/about.html');
+});
 
-console.log('Le serveur HTTP écoute http://localhost:' + PORT);
+var server = app.listen(PORT, function() {
+    console.log('Le serveur HTTP écoute %d', server.address().port);
+});

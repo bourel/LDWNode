@@ -1,0 +1,9 @@
+{
+  "name": "TPNode",
+  "version": "0.1.0",
+  "author": "G.Bourel",
+  "destName": "tpnode",
+  "dependencies": {
+    "express": "4.x"
+  }
+}
