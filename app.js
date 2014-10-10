@@ -7,10 +7,19 @@ var http = require('http'),
 
 // Création d'un serveur HTTP
 server = http.createServer(function (req, res) {
+  console.log(req.url);
   // Début de la fonction de callback : 
   // cette fonction est appelé à chaque requête du client
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('It works\n');
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.end('<!DOCTYPE html>' +
+	'<html>' +
+	  '<head>' +
+	    '<title>TP Node</title>' +
+	  '</head>' +
+	  '<body>' +
+	    '<h1>TP Node.js</h1>' +
+	  '</body>' +
+	'</html>');
 });
 
 server.listen(PORT);
