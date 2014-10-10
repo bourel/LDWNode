@@ -3,49 +3,29 @@ var PORT = 8000;
 
 // Chargement du module http (un module Node.js natif)
 var http = require('http'),
+    fs = require('fs'),
     server;
 
 // Création d'un serveur HTTP
 server = http.createServer(function (req, res) {
+  var fichier = "404.html",
+      codeReponse = 404;
+
   console.log(req.url);
   // Début de la fonction de callback : 
   // cette fonction est appelé à chaque requête du client
   if(req.url == "/"){
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.end('<!DOCTYPE html>' +
-	'<html>' +
-	  '<head>' +
-	    '<title>TP Node</title>' +
-	  '</head>' +
-	  '<body>' +
-	    '<h1>TP Node.js</h1>' +
-	    '<p>Page d\'accueil</p>' +	
-	  '</body>' +
-	'</html>');
+    fichier = "index.html";
+    codeReponse = 200;
   } else if(req.url == "/about"){
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.end('<!DOCTYPE html>' +
-	'<html>' +
-	  '<head>' +
-	    '<title>TP Node</title>' +
-	  '</head>' +
-	  '<body>' +
-	    '<h1>TP Node.js</h1>' +
-	    '<p>A propos</p>' +
-	  '</body>' +
-	'</html>');
-  } else {
-    res.writeHead(404, {'Content-Type': 'text/html'});
-    res.end('<!DOCTYPE html>' +
-	'<html>' +
-	  '<head>' +
-	    '<title>TP Node</title>' +
-	  '</head>' +
-	  '<body>' +
-	    '<h2>Argh page non trouvée</h1>' +
-	  '</body>' +
-	'</html>');
-  }
+    fichier = "about.html";
+    codeReponse = 200;
+  } 
+
+  fs.readFile(fichier, function(err, data){	
+    res.writeHead(codeReponse, {'Content-Type': 'text/html'});
+    res.end(data);
+  });
 });
 
 server.listen(PORT);
