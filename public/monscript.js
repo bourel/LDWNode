@@ -1,8 +1,6 @@
 // Utilise jQuery pour exécuter ce javascript une fois la page chargée
 $(document).ready(function() {
 
- $('#noscript').hide();
-
  $('#toggleBtn').click(function(){
    $('#title').slideToggle(2000, function(){
      if($('#title').css('display') == 'none'){
