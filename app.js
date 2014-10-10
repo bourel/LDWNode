@@ -21,11 +21,15 @@ server = http.createServer(function (req, res) {
     fichier = "about.html";
     codeReponse = 200;
   } 
-
+  
+  console.log("Debut de la lecture");	
   fs.readFile(fichier, function(err, data){	
+    console.log("Fin de la lecture du fichier");
     res.writeHead(codeReponse, {'Content-Type': 'text/html'});
-    res.end(data);
+    res.write(data);
+    res.end();
   });
+  console.log("Fin de la function");
 });
 
 server.listen(PORT);
