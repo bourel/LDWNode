@@ -5,6 +5,9 @@ var PORT = 8000;
 var express = require('express'), 
     app = express();
 
+// Rends le CONTENU du répertoire disponible de manière statique
+app.use(express.static(__dirname + '/public'));
+
 // route '/' renvoie le fichier de la page d'accueil
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
