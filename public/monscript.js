@@ -9,4 +9,17 @@
    });
  });
 
+ // Génère un entier entre 0 et 255
+ function randomColor(){
+  return Math.floor(Math.random()*256);
+ }
+
+ $('#cssBtn').click(function(){
+   var couleur = 'rgba(' + randomColor() + ', '
+			 + randomColor() + ', ' 
+			 + randomColor() + ', ' 
+			 + Math.random() + ')';
+   $('div').css('background-color', couleur);
+ });
+
 })();
