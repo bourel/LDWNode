@@ -1,5 +1,7 @@
+// Utilise jQuery pour exécuter ce javascript une fois la page chargée
+$(document).ready(function() {
 
-(function(){
+ $('#noscript').hide();
 
  $('#toggleBtn').click(function(){
    $('#title').slideToggle(2000, function(){
@@ -22,4 +24,4 @@
    $('div').css('background-color', couleur);
  });
 
-})();
+});
